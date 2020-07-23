@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id = "minusBtnPhone" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id = "itemCountPhone" type="text" class="form-control text-center" value="1">
+                           <button id = "pluseBtnPhone" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id = "phonePrice">1219<span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id = "minusBtnCase" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id = "itemCountCase" type="text" class="form-control text-center" value="1">
+                           <button id = "pluseBtnCase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id = "casePrice">59<span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id = "addingPrice">1278<span></h5>
+                        <h5>$<span id = "tax">0<span></h5>
+                        <h5>$<span id = "grandTotalPrice">1278<span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,55 @@
          </div>
       </div>
    </section>
+
+   <script>
+      function pluseButton(idOne, idTwo, idThree, idFour) {
+            const count = document.getElementById(idOne).value;
+            const countNumber = parseFloat(count);
+            const countResult = countNumber + 1;
+            document.getElementById(idOne).value = countResult;
+            const PriceAmount = idThree;
+            const Result = PriceAmount * countResult;
+            const PriceTotal = document.getElementById(idTwo).innerText = Result;
+            const priceSecond = idFour;
+            const Result2 = priceSecond * countResult;
+            const totalAmountTaka = Result + Result2;
+            document.getElementById("addingPrice").innerText = totalAmountTaka;
+            document.getElementById("grandTotalPrice").innerText = totalAmountTaka;
+      }      
+      function minusButton(idOne, idTwo, idThree, idFour) {
+            const count = document.getElementById(idOne).value;
+            const countNumber = parseFloat(count);
+            if (countNumber <= 1) {
+               return 1;
+            }
+            const countResult = countNumber - 1;
+            document.getElementById(idOne).value = countResult;
+            const PriceAmount = idThree;
+            const Result = PriceAmount * countResult;
+            const PriceTotal = document.getElementById(idTwo).innerText = Result;
+            const priceSecond = idFour;
+            const Result2 = priceSecond * countResult;
+            const totalAmountTaka = Result + Result2;
+            document.getElementById("addingPrice").innerText = totalAmountTaka;
+            document.getElementById("grandTotalPrice").innerText = totalAmountTaka;
+      }          
+          document.getElementById("pluseBtnPhone").addEventListener("click", function() {
+               pluseButton("itemCountPhone", "phonePrice", 1219, 59);
+         })
+         document.getElementById("minusBtnPhone").addEventListener("click", function(){
+            minusButton("itemCountPhone", "phonePrice", 1219,59)
+         })
+         document.getElementById("pluseBtnCase").addEventListener("click", function(){
+            pluseButton("itemCountCase", "casePrice", 1219, 59);
+
+         })
+         document.getElementById("minusBtnCase").addEventListener("click", function(){
+            minusButton("itemCountCase", "casePrice", 1219, 59)
+         })
+            
+   </script>
+
 </body>
 
 </html>

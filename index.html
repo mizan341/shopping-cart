@@ -79,7 +79,7 @@
    </section>
 
    <script>
-      function pluseButton(idOne, idTwo, idThree, idFour) {
+      function pluseButton(idOne, idTwo, idThree) {
             const count = document.getElementById(idOne).value;
             const countNumber = parseFloat(count);
             const countResult = countNumber + 1;
@@ -87,13 +87,9 @@
             const PriceAmount = idThree;
             const Result = PriceAmount * countResult;
             const PriceTotal = document.getElementById(idTwo).innerText = Result;
-            const priceSecond = idFour;
-            const Result2 = priceSecond * countResult;
-            const totalAmountTaka = Result + Result2;
-            document.getElementById("addingPrice").innerText = totalAmountTaka;
-            document.getElementById("grandTotalPrice").innerText = totalAmountTaka;
+            
       }      
-      function minusButton(idOne, idTwo, idThree, idFour) {
+      function minusButton(idOne, idTwo, idThree) {
             const count = document.getElementById(idOne).value;
             const countNumber = parseFloat(count);
             if (countNumber <= 1) {
@@ -104,24 +100,20 @@
             const PriceAmount = idThree;
             const Result = PriceAmount * countResult;
             const PriceTotal = document.getElementById(idTwo).innerText = Result;
-            const priceSecond = idFour;
-            const Result2 = priceSecond * countResult;
-            const totalAmountTaka = Result + Result2;
-            document.getElementById("addingPrice").innerText = totalAmountTaka;
-            document.getElementById("grandTotalPrice").innerText = totalAmountTaka;
+           
       }          
           document.getElementById("pluseBtnPhone").addEventListener("click", function() {
-               pluseButton("itemCountPhone", "phonePrice", 1219, 59);
+               pluseButton("itemCountPhone", "phonePrice", 1219);
          })
          document.getElementById("minusBtnPhone").addEventListener("click", function(){
-            minusButton("itemCountPhone", "phonePrice", 1219,59)
+            minusButton("itemCountPhone", "phonePrice", 1219)
          })
          document.getElementById("pluseBtnCase").addEventListener("click", function(){
-            pluseButton("itemCountCase", "casePrice", 1219, 59);
+            pluseButton("itemCountCase", "casePrice", 59);
 
          })
          document.getElementById("minusBtnCase").addEventListener("click", function(){
-            minusButton("itemCountCase", "casePrice", 1219, 59)
+            minusButton("itemCountCase", "casePrice", 59)
          })
             
    </script>
